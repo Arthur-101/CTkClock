@@ -12,7 +12,7 @@ class AnalogClock(tk.Canvas):
         border_width: int = 3,
         border_color: str = '#b5b5b5',
         fg_color: str = "transparent",
-        time_to_show: str = None,
+        start_time: str = None,
         font: tuple = ('Calibri', 12, 'regular'),
         font_color: str = 'black',
         hour_color: str = '#383838',
@@ -29,7 +29,7 @@ class AnalogClock(tk.Canvas):
         self.radius = radius
         self.border_width = border_width
         self.border_color = border_color            
-        self.time_to_show = time_to_show
+        self.start_time = start_time
         self.font = font
         self.font_color = font_color
         self.hour_color = hour_color
@@ -41,8 +41,9 @@ class AnalogClock(tk.Canvas):
         self.fg_color = fg_color
         self.bg_color = bg_color
         
+        #  Other Variables
         self.initial_time_set = False
-        self.base_time = datetime.now() if not time_to_show else datetime.strptime(time_to_show, "%H:%M:%S")
+        self.base_time = datetime.now() if not start_time else datetime.strptime(start_time, "%H:%M:%S")
         self.last_update_time = datetime.now()
 
         # Handling the `fg_color = "transparent"` argument
@@ -81,7 +82,7 @@ class AnalogClock(tk.Canvas):
         """
         now = datetime.now()
         if not self.initial_time_set:
-            # Set the initial time based on time_to_show or the current time
+            # Set the initial time based on start_time or the current time
             self.initial_time_set = True
             self.last_update_time = now
 
