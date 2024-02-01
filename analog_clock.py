@@ -1,8 +1,7 @@
 import tkinter as tk
 from customtkinter import *
-import time
 import math
-from datetime import datetime, timedelta
+from datetime import datetime
 
 class AnalogClock(tk.Canvas):
     def __init__(
@@ -126,20 +125,46 @@ class AnalogClock(tk.Canvas):
         hour_angle = math.radians((hours % 12) * 30 + (minutes / 60) * 30)
         hour_x = self.radius + self.radius * 0.4 * math.sin(hour_angle)
         hour_y = self.radius - self.radius * 0.4 * math.cos(hour_angle)
-        self.create_line(self.radius, self.radius, hour_x, hour_y, width=self.hour_hand_width, fill=self.hour_color)
+        self.create_line(
+                        self.radius, self.radius,
+                        hour_x, hour_y,
+                        width=self.hour_hand_width,
+                        fill=self.hour_color
+                        )
 
         # Draw minute hand
         minute_angle = math.radians(minutes * 6 + (seconds / 60) * 6)
         minute_x = self.radius + self.radius * 0.6 * math.sin(minute_angle)
         minute_y = self.radius - self.radius * 0.6 * math.cos(minute_angle)
-        self.create_line(self.radius, self.radius, minute_x, minute_y,
-                                width=self.minute_hand_width, fill=self.minute_color)
+        self.create_line(
+                        self.radius, self.radius, 
+                        minute_x, minute_y,
+                        width=self.minute_hand_width,
+                        fill=self.minute_color
+                        )
 
         # Draw second hand
         second_angle = math.radians(seconds * 6)
         second_x = self.radius + self.radius * 0.7 * math.sin(second_angle)
         second_y = self.radius - self.radius * 0.7 * math.cos(second_angle)
-        self.create_line(self.radius, self.radius, second_x, second_y,
-                                width=self.second_hand_width, fill=self.second_color)
+        self.create_line(
+                        self.radius, self.radius,
+                        second_x, second_y,
+                        width=self.second_hand_width,
+                        fill=self.second_color
+                        )
     
+
+    def get_current_time(self):
+        '''
+        This method returns the current time of the clock as a datetime object
+        '''
+        return self.base_time
+
+    def get_current_strftime(self, format_string="%H:%M:%S"):
+        ''' 
+        This method returns the current time of the clock as a formatted string
+        The default format is HH:MM:SS, but you can pass another format if desired
+        '''
+        return self.base_time.strftime(format_string)
 
