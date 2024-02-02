@@ -4,33 +4,7 @@ from datetime import datetime
 from typing import Optional, Tuple
 
 class AnalogClock(tk.Canvas):
-    '''
-    Analog Clock Widget.
-
-    Parameters:
-        master (tk.Tk or tk.Frame): The parent widget.
-        radius (int): Radius of the clock.
-        border_width (int): Width of the clock border.
-        border_color (str): Color of the clock border.
-        fg_color (str): Color of the clock face.
-        font (tuple): Font configuration for clock numbers.
-        font_color (str): Color of the clock numbers.
-        hour_color (str): Color of the hour hand.
-        minute_color (str): Color of the minute hand.
-        second_color (str): Color of the second hand.
-        hour_hand_width (int): Width of the hour hand.
-        minute_hand_width (int): Width of the minute hand.
-        second_hand_width (int): Width of the second hand.
-        start_time (str): Initial time in the format "HH:MM:SS".
-        quarter_hour (bool): Display only quarter-hour numbers.
-        quarter_symbol (str): Symbol to replace non-quarter-hour numbers.
-        quarter_symbol_color (str): Color of the quarter_symbol.
-        bg_color (str): Background color of the clock.
-
-    Example usage:
-        my_clock = AnalogClock(root, radius=200, border_width=5, font=('Arial', 14, 'bold'), hour_color='blue')
-        my_clock.configure(radius=250, bg_color='yellow')
-    '''
+    """An analog clock widget"""
     def __init__(
         self,
         master,
