@@ -9,6 +9,7 @@ class AnalogClock(tk.Canvas):
         self,
         master,
         radius: int = 150,
+        shape: str = 'circle',
         border_width: int = 3,
         border_color: str = '#a6a6a6',
         
@@ -36,8 +37,9 @@ class AnalogClock(tk.Canvas):
         ###  Parameter variables
         self.master = master
         self.radius = radius
+        self.shape = shape
         self.border_width = border_width
-        self.border_color = border_color    
+        self.border_color = border_color  
                 
         self.font = font
         self.font_color = font_color
@@ -133,17 +135,51 @@ class AnalogClock(tk.Canvas):
 
         # Drawing clock face with a slight padding
         padding = 5
-        self.create_oval(padding, padding, 2 * (self.radius - padding), 2 * (self.radius - padding),
-                        width=self.border_width, fill=self.fg_color, outline=self.border_color)
+        if self.shape == 'circle':
+            self.create_oval(padding, padding, 2 * (self.radius - padding), 2 * (self.radius - padding),
+                            width=self.border_width, fill=self.fg_color, outline=self.border_color)
+        elif self.shape == 'rectangle':
+            self.create_rectangle(padding, padding, 2 * (self.radius - padding), 2 * (self.radius - padding),
+                                  width=self.border_width, fill=self.fg_color, outline=self.border_color)
+        else:
+            raise ValueError("Invalid value for 'shape'. Use 'circle' or 'rectangle'.")
+        # self.create_oval(padding, padding, 2 * (self.radius - padding), 2 * (self.radius - padding),
+        #                 width=self.border_width, fill=self.fg_color, outline=self.border_color)
+        # Drawing clock numbers
+        x_adjust = 0
+        y_adjust = 0
+        if self.shape == 'rectangle':
+            # Adjusting coordinates for numbers in a rectangle
+            x_adjust = 10
+            y_adjust = 13
 
         # Drawing clock numbers
         if not self.quarter_hour:           ## If `quarter_hour` is False
             for i in range(1, 13):
                 angle = math.radians(i * 30)
-                x = self.radius + self.radius * 0.8 * math.sin(angle)
-                y = self.radius - self.radius * 0.8 * math.cos(angle)
+                if i == 2 or i == 4:
+                    x = self.radius + self.radius * 0.8 * math.sin(angle) + x_adjust
+                    y = self.radius - self.radius * 0.8 * math.cos(angle)
+                elif i == 5:
+                    x = self.radius + self.radius * 0.8 * math.sin(angle) + 4
+                    y = self.radius - self.radius * 0.8 * math.cos(angle) + y_adjust
+                elif i == 7:
+                    x = self.radius + self.radius * 0.8 * math.sin(angle) - 4
+                    y = self.radius - self.radius * 0.8 * math.cos(angle) + y_adjust
+                elif i == 8 or i == 10:
+                    x = self.radius + self.radius * 0.8 * math.sin(angle) - x_adjust
+                    y = self.radius - self.radius * 0.8 * math.cos(angle)
+                elif i == 11:
+                    x = self.radius + self.radius * 0.8 * math.sin(angle) - 4
+                    y = self.radius - self.radius * 0.8 * math.cos(angle) - y_adjust
+                elif i == 1:
+                    x = self.radius + self.radius * 0.8 * math.sin(angle) + 4
+                    y = self.radius - self.radius * 0.8 * math.cos(angle) - y_adjust
+                else:
+                    x = self.radius + self.radius * 0.8 * math.sin(angle)
+                    y = self.radius - self.radius * 0.8 * math.cos(angle)
                 self.create_text(x, y, text=str(i), font=self.font, fill=self.font_color)
-                
+
         elif self.quarter_hour and not self.quarter_symbol: ## If `quarter_hour` is True and `quarter_symbol` is False
             for i in range(3,13,3):                             ## Only for 3, 6, 9, 12
                 angle = math.radians(i*30)
