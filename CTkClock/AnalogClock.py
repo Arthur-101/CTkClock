@@ -41,16 +41,16 @@ class AnalogClock(tk.Canvas):
         fg_color: str = "transparent",
         bg_color: str = "transparent",
         
-        font: Tuple[str, int, str] = ('Calibri', 12, 'regular'),
+        font: Tuple[str, int, str] = ('Calibri', 12, 'normal'),
         font_color: str = 'black',
         
         hour_color: str = '#383838',
         minute_color: str = '#454545',
         second_color: str = '#ff3e3e',
         
-        hour_hand_width: int = 4,
-        minute_hand_width: int = 3,
-        second_hand_width: int = 1,
+        hour_hand_width: int = 7,
+        minute_hand_width: int = 5,
+        second_hand_width: int = 3,
         
         start_time: Optional[str] = None,
         quarter_hour: bool = False,
