@@ -85,6 +85,7 @@ root.mainloop()
   | _shape_  | (str): The shape of the clock face, either 'circle' or 'rectangle'. Default: 'circle'  |
   | _border_width_  | (int): Width of the clock border.  |
   | _border_color_  | (str): The color of the border.  |
+  | _clock_face_style_  | (str): The style of clock face. Either 'Digit' or 'Roman' or 'NONE'. Default: 'digit'  |
   | _fg_color_  | (str): The foreground color of the clock face or 'transparent' to match the parent's background. Default: 'transparent'  |
   | _bg_color_  | (str): The background color of the clock face or 'transparent' to match the parent's background. Default: 'transparent'  |
   | _font_  | (Tuple[str, int, str]): Font specifications for the clock numbers.  |
