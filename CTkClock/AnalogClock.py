@@ -1,7 +1,7 @@
 import tkinter as tk
 import math
 from datetime import datetime
-from typing import Optional, Tuple, Union
+from typing import Optional, Tuple
 
 class AnalogClock(tk.Canvas):
     """An analog clock widget"""
