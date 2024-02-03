@@ -76,3 +76,34 @@ root.mainloop()
 ```
 ![Example 3](https://github.com/Arthur-101/CTkClock/blob/main/Images/example%20clock3.png)
 
+## Arguments:
+
+  | Parameters  | Description  |
+  | --------  | -----------  |
+  | _master_  | widget or window where the clock will be placed.  |
+  | _radius_  | (int): Radius of the clock in pixels.  |
+  | _shape_  | (str): The shape of the clock face, either 'circle' or 'rectangle'. Default: 'circle'  |
+  | _border_width_  | (int): Width of the clock border.  |
+  | _border_color_  | (str): The color of the border.  |
+  | _fg_color_  | (str): The foreground color of the clock face or 'transparent' to match the parent's background. ______________ Default: 'transparent'  |
+  | _bg_color_  | (str): The background color of the clock face or 'transparent' to match the parent's background. ______________ Default: 'transparent'  |
+  | _font_  | (Tuple[str, int, str]): Font specifications for the clock numbers.  |
+  | _font_color_  | (str): The color of the clock numbers.  |
+  | _hour_color_  | (str): The color of the hour hand.  |
+  | _minute_color_  | (str): The color of the minute hand.  |
+  | _second_color_  | (str): The color of the second hand.  |
+  |  _hour_hand_width_  | (int): The width of the hour hand.  |
+  | _minute_hand_width_  | (int): The width of the minute hand.  |
+  | _second_hand_width_  | (int): The width of the second hand.  |
+  | _start_time_  | (Optional[str]): The initial time in the format 'HH:MM:SS'.  |
+  | _quarter_hour_  | (bool): If True, display only 3, 6, 9, 12 and optional quarter symbols.  |
+  | _quarter_symbol_  | (Optional[str]): Symbol to be displayed instead of numbers not divisible by 3.  |
+  | _quarter_symbol_color_  | (Optional[str]): Color of the quarter symbols.  |
+
+## Methods:
+  | Methods  | Description  |
+  | -------  | -----------  |
+  | _.get_current_time()_  |  Get the current time of the clock as a datetime object.  |
+  | _.get_current_strftime(format_string="%H:%M:%S")_  | Get the current time of the clock as a formatted string.  |
+  | _.configure()_  | To configure some options of the clock.  |
+
