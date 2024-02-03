@@ -8,7 +8,7 @@
 
 # AnalogCLock
 
-## Usage
+## Usage:
 
 **Example 1:**
 ```python
